@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
-class PlatosController extends Controller
+class ProductController extends Controller
 {
     public function index()
     {
@@ -18,20 +19,17 @@ class PlatosController extends Controller
     public function create(Request $request)
     {
         $producto = new Producto();
-        $producto->nombre = $request->nombre;
-        $producto->categoria = $request->categoria;
-        $producto->precio = $request->precio;
-        $producto->descripcion = $request->descripcion;
+        $request->nombre = $request->nombre;
+        $request->categoria = $request->categoria;
+        $request->precio = $request->precio;
+        $request->descripcion = $request->descripcion;
 
         $producto->save();
     }
 
-    public function show($id)
+    public function show($name)
     {
-        $producto = Producto::find($id);
-
-        return $producto;
-        // return view('platos.show', compact('name'));
+        return view('platos.show', compact('name'));
     }
 
     public function update(Request $request, $id)
