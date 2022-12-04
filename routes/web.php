@@ -19,7 +19,7 @@ Route::get('/', HomeController::class);
 
 Route::controller(PlatosController::class)->group(function () {
     Route::get('platos', 'index');
-    Route::get('platos/create', 'create');
+    Route::post('platos/create', 'create');
     Route::get('platos/{plato}', 'show');
 });
 
