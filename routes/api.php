@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PlatosController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TableController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +35,12 @@ Route::controller(CategoryController::class)->group(function () {
     Route::get('/categoria/{name}', 'show');
     Route::put('/categoria/{id}', 'update');
     Route::delete('/categoria/{id}', 'destroy');
+});
+
+Route::controller(TableController::class)->group(function () {
+    Route::get('/mesas', 'index');
+    Route::post('/mesa', 'create');
+    Route::get('/mesa/{number_table}', 'show');
+    Route::put('/mesa/{id}', 'update');
+    Route::delete('/mesa/{id}', 'destroy');
 });
