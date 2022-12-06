@@ -22,6 +22,8 @@ class PlatosController extends Controller
         $producto->categoria = $request->categoria;
         $producto->precio = $request->precio;
         $producto->descripcion = $request->descripcion;
+        $producto->image = $request->image;
+
 
         $producto->save();
     }
@@ -41,6 +43,8 @@ class PlatosController extends Controller
         $producto->categoria = $request->categoria;
         $producto->precio = $request->precio;
         $producto->descripcion = $request->descripcion;
+        $producto->image = $request->image;
+
 
         $producto->save();
 

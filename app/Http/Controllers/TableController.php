@@ -26,7 +26,7 @@ class TableController extends Controller
         $table->number_table = $request->number_table;
         $table->save();
 
-        return $category;
+        return $table;
     }
 
     public function destroy($id)
