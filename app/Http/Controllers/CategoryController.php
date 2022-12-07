@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -11,6 +10,7 @@ class CategoryController extends Controller
     public function index()
     {
         $category = Category::get();
+
         return json_encode(['category' => $category]);
     }
 
@@ -32,8 +32,8 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $category = Category::destroy($id);
+        Category::destroy($id);
 
-        return $category;
+        return json_encode(['msg' => 'Categoria eliminada']);
     }
 }

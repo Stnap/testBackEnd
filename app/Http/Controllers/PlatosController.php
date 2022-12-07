@@ -49,8 +49,8 @@ class PlatosController extends Controller
 
     public function destroy($id)
     {
-        $producto = Producto::destroy($id);
+        Producto::destroy($id);
 
-        return $producto;
+        return json_encode(['msg' => 'Producto eliminado']);
     }
 }

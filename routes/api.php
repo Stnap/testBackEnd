@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\PlatosController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PlatosController;
 use App\Http\Controllers\TableController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +26,7 @@ Route::controller(PlatosController::class)->group(function () {
     Route::post('/plato', 'create');
     Route::get('/plato/{name}', 'show');
     Route::put('/plato/{id}', 'update');
-    Route::delete('/plato/{id}', 'destroy');
+    Route::delete('/platos/{id}', 'destroy');
 });
 
 Route::controller(CategoryController::class)->group(function () {
@@ -34,7 +34,7 @@ Route::controller(CategoryController::class)->group(function () {
     Route::post('/categoria', 'create');
     Route::get('/categoria/{name}', 'show');
     Route::put('/categoria/{id}', 'update');
-    Route::delete('/categoria/{id}', 'destroy');
+    Route::delete('/categorias/{id}', 'destroy');
 });
 
 Route::controller(TableController::class)->group(function () {
