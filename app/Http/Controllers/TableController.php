@@ -10,6 +10,7 @@ class TableController extends Controller
     public function index()
     {
         $table = Table::get();
+
         return json_encode(['table' => $table]);
     }
 
@@ -26,13 +27,13 @@ class TableController extends Controller
         $table->number_table = $request->number_table;
         $table->save();
 
-        return $category;
+        return $table;
     }
 
     public function destroy($id)
     {
-        $table = Table::destroy($id);
+        Table::destroy($id);
 
-        return $table;
+        return json_encode(['msg' => 'Mesa eliminada']);
     }
 }

@@ -32,8 +32,8 @@ Route::controller(PlatosController::class)->group(function () {
 Route::controller(CategoryController::class)->group(function () {
     Route::get('/categorias', 'index');
     Route::post('/categoria', 'create');
-    Route::get('/categoria/{name}', 'show');
-    Route::put('/categoriaUPDATE/{id}', 'update');
+    Route::get('/categoria/{id}', 'show');
+    Route::put('/categoriaUPDATE', 'update');
     Route::delete('/categorias/{id}', 'destroy');
 });
 
@@ -42,5 +42,5 @@ Route::controller(TableController::class)->group(function () {
     Route::post('/mesa', 'create');
     Route::get('/mesa/{number_table}', 'show');
     Route::put('/mesa/{id}', 'update');
-    Route::delete('/mesa/{id}', 'destroy');
+    Route::delete('/mesas/{id}', 'destroy');
 });

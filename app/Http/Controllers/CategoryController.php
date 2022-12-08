@@ -21,13 +21,21 @@ class CategoryController extends Controller
         $category->save();
     }
 
-    public function update(Request $request, $id)
+    public function show($id)
     {
-        $category = Category::findOrFail($request->$id);
-        $category->name = $request->name;
-        $category->save();
+        $category = Category::find($id);
 
         return $category;
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->json()->all();
+        $name = $data['name'];
+        $id = $data['id'];
+        Category::where('id', $id)->update(['name' => $name]);
+
+        return json_encode(['msg' => 'Producto actualizado']);
     }
 
     public function destroy($id)

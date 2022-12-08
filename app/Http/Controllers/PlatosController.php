@@ -38,7 +38,7 @@ class PlatosController extends Controller
     {
         $data = $request->json()->all();
         $nombre = $data['nombre'];
-        $categoria = $data['categoria'];
+        $categoria = $data['selected'];
         $precio = $data['precio'];
         $descripcion = $data['descripcion'];
         $id = $data['id'];
