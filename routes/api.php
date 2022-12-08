@@ -44,3 +44,5 @@ Route::controller(TableController::class)->group(function () {
     Route::put('/mesa/{id}', 'update');
     Route::delete('/mesas/{id}', 'destroy');
 });
+
+Route::post('/upload', [ImageController::class, 'uploadImage'])->name('images.upload');
