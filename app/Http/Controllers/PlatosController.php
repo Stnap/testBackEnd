@@ -34,17 +34,17 @@ class PlatosController extends Controller
         // return view('platos.show', compact('name'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $producto = Producto::findOrFail($request->$id);
-        $producto->nombre = $request->nombre;
-        $producto->categoria = $request->categoria;
-        $producto->precio = $request->precio;
-        $producto->descripcion = $request->descripcion;
+        $data = $request->json()->all();
+        $nombre = $data['nombre'];
+        $categoria = $data['categoria'];
+        $precio = $data['precio'];
+        $descripcion = $data['descripcion'];
+        $id = $data['id'];
+        Producto::where('id', $id)->update(['nombre' => $nombre, 'categoria' => $categoria, 'precio' => $precio, 'descripcion' => $descripcion]);
 
-        $producto->save();
-
-        return $producto;
+        return json_encode(['msg' => 'Producto actualizado']);
     }
 
     public function destroy($id)

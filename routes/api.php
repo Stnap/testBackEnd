@@ -24,8 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(PlatosController::class)->group(function () {
     Route::get('/platos', 'index');
     Route::post('/plato', 'create');
-    Route::get('/plato/{name}', 'show');
-    Route::put('/plato/{id}', 'update');
+    Route::get('/plato/{id}', 'show');
+    Route::put('/platoUPDATE', 'update');
     Route::delete('/platos/{id}', 'destroy');
 });
 
@@ -33,7 +33,7 @@ Route::controller(CategoryController::class)->group(function () {
     Route::get('/categorias', 'index');
     Route::post('/categoria', 'create');
     Route::get('/categoria/{name}', 'show');
-    Route::put('/categoria/{id}', 'update');
+    Route::put('/categoriaUPDATE/{id}', 'update');
     Route::delete('/categorias/{id}', 'destroy');
 });
 
