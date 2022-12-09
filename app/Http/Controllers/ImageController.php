@@ -12,7 +12,7 @@ class ImageController extends Controller
 {
     public function uploadImage(Request $request)
     {
-        $validator = Validator::make($request->all(), ['image' => ['required', File::image()->max(2 * 1024)]]);
+        $validator = Validator::make($request->all(), ['image' => ['required', File::image()->max(10 * 1024)]]);
         if ($validator->fails()) {
             return response()->json($validator->messages());
         }

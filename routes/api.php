@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PlatosController;
 use App\Http\Controllers\TableController;
 use Illuminate\Http\Request;
