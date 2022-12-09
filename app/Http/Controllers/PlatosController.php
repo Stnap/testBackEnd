@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\File;
 
 class PlatosController extends Controller
 {
@@ -17,13 +20,30 @@ class PlatosController extends Controller
 
     public function create(Request $request)
     {
+        $validator = Validator::make($request->all(), ['image' => ['required', File::image()->max(10 * 1024)]]);
+        if ($validator->fails()) {
+            return response()->json($validator->messages());
+        }
+
         $producto = new Producto();
-        $producto->nombre = $request->nombre;
-        $producto->categoria = $request->categoria;
-        $producto->precio = $request->precio;
-        $producto->descripcion = $request->descripcion;
+
+        $file = $request->file('image');
+        $filename = uniqid().'_'.$file->getClientOriginalName();
+        $file->move(public_path('public/images'), $filename);
+        $url = URL::to('/').'/public/images/'.$filename;
+        $producto['url'] = $url;
+        $producto['nombre'] = $request->nombre;
+        $producto['categoria'] = $request->categoria;
+        $producto['precio'] = $request->precio;
+        $producto['descripcion'] = $request->descripcion;
+        // $producto->nombre = $request->nombre;
+        // $producto->categoria = $request->categoria;
+        // $producto->precio = $request->precio;
+        // $producto->descripcion = $request->descripcion;
 
         $producto->save();
+
+        return response()->json(['isSuccess' => true, 'url' => $url]);
     }
 
     public function show($id)
