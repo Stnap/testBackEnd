@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\PlatosController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PlatosController;
 use App\Http\Controllers\TableController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,17 +25,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(PlatosController::class)->group(function () {
     Route::get('/platos', 'index');
     Route::post('/plato', 'create');
-    Route::get('/plato/{name}', 'show');
-    Route::put('/plato/{id}', 'update');
-    Route::delete('/plato/{id}', 'destroy');
+    Route::get('/plato/{id}', 'show');
+    Route::put('/platoUPDATE', 'update');
+    Route::delete('/platos/{id}', 'destroy');
 });
 
 Route::controller(CategoryController::class)->group(function () {
     Route::get('/categorias', 'index');
     Route::post('/categoria', 'create');
-    Route::get('/categoria/{name}', 'show');
-    Route::put('/categoria/{id}', 'update');
-    Route::delete('/categoria/{id}', 'destroy');
+    Route::get('/categoria/{id}', 'show');
+    Route::put('/categoriaUPDATE', 'update');
+    Route::delete('/categorias/{id}', 'destroy');
 });
 
 Route::controller(TableController::class)->group(function () {
@@ -42,5 +43,7 @@ Route::controller(TableController::class)->group(function () {
     Route::post('/mesa', 'create');
     Route::get('/mesa/{number_table}', 'show');
     Route::put('/mesa/{id}', 'update');
-    Route::delete('/mesa/{id}', 'destroy');
+    Route::delete('/mesas/{id}', 'destroy');
 });
+
+Route::post('/upload', [ImageController::class, 'uploadImage'])->name('images.upload');
