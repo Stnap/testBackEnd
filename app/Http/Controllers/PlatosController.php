@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\File;
 
 
 class PlatosController extends Controller
@@ -19,8 +21,6 @@ class PlatosController extends Controller
 
     public function create(Request $request)
     {
-<<<<<<< Updated upstream
-=======
         $validator = Validator::make($request->all(), ['image' => ['required', File::image()->max(10 * 1024)]]);
         if ($validator->fails()) {
             return response()->json($validator->messages());
@@ -29,7 +29,6 @@ class PlatosController extends Controller
 
 
 
->>>>>>> Stashed changes
         $producto = new Producto();
         $producto->nombre = $request->nombre;
         $producto->categoria = $request->categoria;
@@ -37,8 +36,6 @@ class PlatosController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->image = $request->image;
 
-<<<<<<< Updated upstream
-=======
         $file = $request->file('image');
         $filename = uniqid() . '_' . $file->getClientOriginalName();
         $file->move(public_path('public/images'), $filename);
@@ -52,7 +49,6 @@ class PlatosController extends Controller
         // $producto->categoria = $request->categoria;
         // $producto->precio = $request->precio;
         // $producto->descripcion = $request->descripcion;
->>>>>>> Stashed changes
 
         $producto->save();
     }
