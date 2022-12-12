@@ -26,7 +26,8 @@ Route::controller(PlatosController::class)->group(function () {
     Route::get('/platos', 'index');
     Route::post('/plato', 'create');
     Route::get('/plato/{id}', 'show');
-    Route::put('/platoUPDATE', 'update');
+    Route::post('/platoUpdate', 'update');
+    Route::post('/platoUpdateImage', 'updateImage');
     Route::delete('/platos/{id}', 'destroy');
 });
 
