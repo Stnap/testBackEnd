@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
+
+
 class PlatosController extends Controller
 {
     public function index()
@@ -17,6 +19,17 @@ class PlatosController extends Controller
 
     public function create(Request $request)
     {
+<<<<<<< Updated upstream
+=======
+        $validator = Validator::make($request->all(), ['image' => ['required', File::image()->max(10 * 1024)]]);
+        if ($validator->fails()) {
+            return response()->json($validator->messages());
+        }
+
+
+
+
+>>>>>>> Stashed changes
         $producto = new Producto();
         $producto->nombre = $request->nombre;
         $producto->categoria = $request->categoria;
@@ -24,6 +37,22 @@ class PlatosController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->image = $request->image;
 
+<<<<<<< Updated upstream
+=======
+        $file = $request->file('image');
+        $filename = uniqid() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('public/images'), $filename);
+        $url = URL::to('/') . '/public/images/' . $filename;
+        $producto['url'] = $url;
+        $producto['nombre'] = $request->nombre;
+        $producto['categoria'] = $request->categoria;
+        $producto['precio'] = $request->precio;
+        $producto['descripcion'] = $request->descripcion;
+        // $producto->nombre = $request->nombre;
+        // $producto->categoria = $request->categoria;
+        // $producto->precio = $request->precio;
+        // $producto->descripcion = $request->descripcion;
+>>>>>>> Stashed changes
 
         $producto->save();
     }
